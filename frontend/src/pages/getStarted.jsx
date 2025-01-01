@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const GetStarted = () => {
   const features = [
@@ -8,38 +9,46 @@ const GetStarted = () => {
   ];
 
   return (
-    <div className="bg-gray-100 text-gray-800">
+    <div className="text-gray-800 bg-gray-100">
       {/* Navbar */}
-      <nav className="bg-blue-700 text-white p-4">
-        <div className="container mx-auto flex justify-between items-center">
-          <h1 className="text-xl font-bold">BankApp</h1>
-          <ul className="flex space-x-4">
-            <li><a href="#home" className="hover:underline">Home</a></li>
-            <li><a href="#features" className="hover:underline">Features</a></li>
-            <li><a href="#contact" className="hover:underline">Contact</a></li>
-          </ul>
-          <button className="bg-white text-blue-700 px-4 py-2 rounded-lg hover:bg-gray-200">Login</button>
-        </div>
-      </nav>
+      <nav className="p-4 text-white bg-blue-700">
+  <div className="container flex items-center justify-between mx-auto">
+    <div className="flex items-center">
+      <h1 className="text-xl font-bold">Bank A</h1>
+      <span className="mx-2 text-xl font-bold">-</span>
+      {/* Seychelles Flag */}
+      <img 
+        src="https://upload.wikimedia.org/wikipedia/commons/f/fc/Flag_of_Seychelles.svg" 
+        alt="Seychelles Flag" 
+        className="w-8 h-8 mr-2"
+      />
+      <h1 className="text-xl font-bold">Seychelles</h1>
+    </div>
+  </div>
+</nav>
+
+
 
       {/* Hero Section */}
-      <section id="home" className="bg-blue-100 py-20 text-center">
-        <div className="container mx-auto">
-          <h1 className="text-4xl font-bold text-blue-700">Welcome to BankApp</h1>
-          <p className="mt-4 text-gray-700">Manage your finances effortlessly and securely.</p>
-          <button className="mt-6 bg-blue-700 text-white px-6 py-3 rounded-lg hover:bg-blue-800">
-            Get Started
-          </button>
-        </div>
-      </section>
+      <section id="home" className="py-20 text-center bg-blue-100">
+  <div className="container mx-auto">
+    <h1 className="text-4xl font-bold text-blue-700">Welcome to BankApp</h1>
+    <p className="mt-4 text-gray-700">Manage your finances effortlessly and securely.</p>
+    <Link to="/userlogin">
+      <button className="px-6 py-3 mt-6 text-white bg-blue-700 rounded-lg hover:bg-blue-800">
+        LOGIN TO THE SYSTEM
+      </button>
+    </Link>
+  </div>
+</section>
 
       {/* Features Section */}
       <section id="features" className="py-20 bg-gray-100">
         <div className="container mx-auto text-center">
           <h2 className="text-3xl font-bold text-blue-700">Why Choose BankApp?</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+          <div className="grid grid-cols-1 gap-8 mt-8 md:grid-cols-3">
             {features.map((feature, index) => (
-              <div key={index} className="bg-white p-6 shadow-lg rounded-lg">
+              <div key={index} className="p-6 bg-white rounded-lg shadow-lg">
                 <h3 className="text-xl font-semibold text-blue-700">{feature.title}</h3>
                 <p className="mt-2 text-gray-600">{feature.description}</p>
               </div>
@@ -49,7 +58,7 @@ const GetStarted = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-blue-700 text-white py-4 text-center">
+      <footer className="py-4 text-center text-white bg-blue-700">
         <p>&copy; 2024 BankApp. All rights reserved.</p>
       </footer>
     </div>
