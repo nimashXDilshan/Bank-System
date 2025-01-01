@@ -27,11 +27,11 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-500 via-gray-200 to-white">
-      <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-lg">
-        <h2 className="text-3xl font-semibold text-center mb-6 text-blue-800">Login</h2>
+    <div className="flex items-center justify-center min-h-screen p-6 bg-blue-500">
+      <div className="w-full max-w-md p-8 bg-white rounded-lg shadow-lg">
+        <h2 className="mb-6 text-3xl font-semibold text-center text-blue-800">Login</h2>
         
-        {error && <p className="text-red-500 text-sm text-center mb-4">{error}</p>}
+        {error && <p className="mb-4 text-sm text-center text-red-500">{error}</p>}
 
         <form onSubmit={handleLogin}>
           <div className="mb-4">
@@ -39,26 +39,26 @@ const LoginPage = () => {
             <input
               type="text"
               id="username"
-              className="mt-1 p-3 w-full border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              className="w-full p-3 mt-1 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               placeholder="Enter your username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
           </div>
 
-          <div className="mb-6 relative">
+          <div className="relative mb-6">
             <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</label>
             <input
               type={isPasswordVisible ? 'text' : 'password'}
               id="password"
-              className="mt-1 p-3 w-full border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              className="w-full p-3 mt-1 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               placeholder="Enter your password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
             <button
               type="button"
-              className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-600"
+              className="absolute text-gray-600 transform -translate-y-1/2 right-3 top-1/2"
               onClick={togglePasswordVisibility}
             >
               {isPasswordVisible ? 'Hide' : 'Show'}
@@ -67,13 +67,13 @@ const LoginPage = () => {
 
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white p-3 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+            className="w-full p-3 text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
           >
             Login
           </button>
         </form>
 
-        <div className="text-center mt-4">
+        <div className="mt-4 text-center">
           <a href="/forgot-password" className="text-sm text-blue-600 hover:underline">Forgot Password?</a>
         </div>
       </div>

@@ -2,6 +2,20 @@ import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"; // Correct import
 import UserLogin from "./pages/userLogin"; // Removed .jsx extension and corrected to PascalCase
 import GetStarted from "./pages/getStarted"; // Removed .jsx extension and corrected to PascalCase
+import Error from "./pages/404Errorfound";
+import Myaccounts from "./pages/myAccounts"; 
+import Myloans from "./pages/myLoans"; 
+import SavingAccountDetails from "./pages/savingAccountDetails"; 
+import CheckingaccountDetails from "./pages/checkingAccountDetails"; 
+import FixedDepositDetails from "./pages/fixedAccountDetails"; 
+import LoanAccountDetails from "./pages/loanAccountDetails"; 
+import CustomerBankProfile from "./pages/customerBankProfile"; 
+import DepositWithdrwalOnlineTransaction from "./pages/deposit_withdrwal_onlinetransaction";
+import CreateLoanRequest from "./pages/createLoanRequest";
+import CreateOnlineTransfer from "./pages/createOnlineTransfer";
+import BankServices from "./pages/bankServices";
+import ManagerBankProfile from "./pages/managerBankProfile"; 
+import EmployeeBankProfile from "./pages/employeeBankProfile"; 
 // import AppLayout from "./components/AppLayout"; // Uncomment if you have a layout component
 // import Error from "./components/Error"; // Uncomment if you have an Error component
 
@@ -22,11 +36,23 @@ const App = () => {
 
           {/* Routes accessible by all users */}
           <Route path="/userlogin" element={<UserLogin />} />
-          <Route path="/getstarted" element={<GetStarted />} />
-
+          <Route path="/" element={<GetStarted />} />
+          <Route path="/myaccounts" element={<Myaccounts />} />
+          <Route path="/myloans" element={<Myloans />} />
+          <Route path="/savingdetails" element={<SavingAccountDetails />} />
+          <Route path="/checkingdetails" element={<CheckingaccountDetails />} />
+          <Route path="/fixeddetails" element={<FixedDepositDetails />} />
+          <Route path="/loandetails" element={<LoanAccountDetails />} />
+          <Route path="/customerbankprofile" element={<CustomerBankProfile />} />
+          <Route path="/managerbankprofile" element={<ManagerBankProfile />} />
+          <Route path="/employeebankprofile" element={<EmployeeBankProfile />} />
+          <Route path="/depositwithdrawalonlinetransaction" element={<DepositWithdrwalOnlineTransaction />} />
+          <Route path="/createloanrequest" element={<CreateLoanRequest />} />
+          <Route path="/createonlinetransfer" element={<CreateOnlineTransfer />} />
+          <Route path="/bankservices" element={<BankServices />} />
           {/* Catch-all for unknown routes */}
           {/* Uncomment and define your Error component */}
-          {/* <Route path="*" element={<Error />} /> */}
+          <Route path="*" element={<Error />} />
         </Routes>
       {/* </AppLayout> */}
     </Router>
