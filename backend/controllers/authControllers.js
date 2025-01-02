@@ -15,6 +15,8 @@ export const login = async (req, res) => {
         return res.status(404).json({ message: "Invald username or password" });
       }
   
+      
+      // this token generate function is inside the utils folder
       generateTokenAndSetCookie(user._id,res);
   
       res.status(201).json({ 
