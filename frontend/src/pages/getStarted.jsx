@@ -34,7 +34,7 @@ const GetStarted = () => {
   <div className="container mx-auto">
     <h1 className="text-4xl font-bold text-blue-700">Welcome to BankApp</h1>
     <p className="mt-4 text-gray-700">Manage your finances effortlessly and securely.</p>
-    <Link to="/userlogin">
+    <Link to="/whoareyou">
       <button className="px-6 py-3 mt-6 text-white bg-blue-700 rounded-lg hover:bg-blue-800">
         LOGIN TO THE SYSTEM
       </button>
