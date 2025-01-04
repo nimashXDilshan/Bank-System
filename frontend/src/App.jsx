@@ -15,7 +15,8 @@ import CreateLoanRequest from "./pages/createLoanRequest";
 import CreateOnlineTransfer from "./pages/createOnlineTransfer";
 import BankServices from "./pages/bankServices";
 import ManagerBankProfile from "./pages/managerBankProfile"; 
-import EmployeeBankProfile from "./pages/employeeBankProfile"; 
+import EmployeeBankProfile from "./pages/employeeBankProfile";
+import WhoAreYou from "./pages/whoAreyou";  
 // import AppLayout from "./components/AppLayout"; // Uncomment if you have a layout component
 // import Error from "./components/Error"; // Uncomment if you have an Error component
 
@@ -50,6 +51,7 @@ const App = () => {
           <Route path="/createloanrequest" element={<CreateLoanRequest />} />
           <Route path="/createonlinetransfer" element={<CreateOnlineTransfer />} />
           <Route path="/bankservices" element={<BankServices />} />
+          <Route path="/whoareyou" element={<WhoAreYou />} />
           {/* Catch-all for unknown routes */}
           {/* Uncomment and define your Error component */}
           <Route path="*" element={<Error />} />
