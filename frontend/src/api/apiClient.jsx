@@ -3,6 +3,7 @@ import axios from 'axios';
 const api = axios.create({
   baseURL: 'http://localhost:8000/api', // Base URL for your API
   timeout: 10000, // Optional: set a timeout for requests
+  withCredentials: true,
 });
 
 // Add a request interceptor
