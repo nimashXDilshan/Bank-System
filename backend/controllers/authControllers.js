@@ -104,23 +104,25 @@ export const login = async (req, res) => {
   };
 
 
+
+  
   export const logout = (req, res) => {
+    console.log(req.user)
     try {
-      res.cookie("jwt", "", {
-        httpOnly: true, // Same as when the cookie was set
-        secure: process.env.NODE_ENV === "production", // Only for HTTPS in production
-        sameSite: "strict", // Match the sameSite setting
-        maxAge: 0,
-        path: "/", // Match the path where it was set
-      });
       
+      res.cookie("jwt", "", {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "strict",
+        maxAge: 0, // Clear cookie immediately
+        path: "/", // Match the original path
+      });
   
       console.log("User logged out successfully.");
-      
       res.status(200).json({ message: "Logout successful." });
-      //console.log(res.data);
     } catch (error) {
       console.error("Logout error:", error);
       res.status(500).json({ message: "An error occurred during logout." });
     }
   };
+  
