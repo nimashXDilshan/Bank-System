@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import api from '../api/apiClient';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const ViewMyAccounts = () => {
   const [searchTerm, setSearchTerm] = useState("");
+    const navigate = useNavigate();
 
   const accounts = [
     { accountNumber: "1234567890", type: "Savings", balance: "$5,000.00" },
@@ -19,27 +21,16 @@ const ViewMyAccounts = () => {
 
   const handleLogout = async () => {
     try {
-      const response = await api.post("auth/logout");
-      console.log(response.data.message);
-  
-      // Clear local storage (optional, if you're using both cookies and localStorage)
-      localStorage.removeItem("jwt");
-  
-      // Redirect to login page
-      window.location.href = "/userlogin";
+      await api.post('/auth/logout');
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      navigate('/userlogin');
     } catch (error) {
-      if (error.response) {
-        console.error("Logout failed:", error.response.data.message);
-        alert(`Logout failed: ${error.response.data.message}`);
-      } else {
-        console.error("Error:", error.message);
-        alert("An unexpected error occurred. Please try again.");
-      }
+      console.error('Logout failed:', error.response?.data?.message || error.message);
     }
   };
   
-  
-  return (
+return (
     <div className="flex flex-col items-center min-h-screen p-6 bg-gradient-to-r from-blue-500 via-gray-100 to-blue-300">
       <h1 className="mb-6 text-3xl font-bold text-blue-900">My Accounts</h1>
       <div className="w-full max-w-4xl p-6 bg-white rounded-lg shadow-md">

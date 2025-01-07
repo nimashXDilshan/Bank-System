@@ -17,11 +17,15 @@ import BankServices from "./pages/bankServices";
 import ManagerBankProfile from "./pages/managerBankProfile"; 
 import EmployeeBankProfile from "./pages/employeeBankProfile";
 import WhoAreYou from "./pages/whoAreyou";  
+
+import { AuthProvider, useAuth } from './contexts/authContext';
+
 // import AppLayout from "./components/AppLayout"; // Uncomment if you have a layout component
 // import Error from "./components/Error"; // Uncomment if you have an Error component
 
 const App = () => {
   return (
+    <AuthProvider>
     <Router>
       {/* If you want to use a layout, uncomment the following line and wrap the routes inside AppLayout */}
       {/* <AppLayout> */}
@@ -58,6 +62,7 @@ const App = () => {
         </Routes>
       {/* </AppLayout> */}
     </Router>
+    </AuthProvider>
   );
 };
 

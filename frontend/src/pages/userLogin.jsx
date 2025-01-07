@@ -14,10 +14,10 @@ const LoginPage = () => {
   const location = useLocation();  // Get location from React Router
 
   // Get role from location state
-  const { role } = location.state || {};  // Retrieve role from state or set to undefined if not found
+  const {role} = location.state || {};  // Retrieve role from state or set to undefined if not found
 
   useEffect(() => {
-    // If no role is passed, redirect to the role selection page
+    //If no role is passed, redirect to the role selection page
     if (!role) {
       navigate('/whoareyou');
     }
@@ -57,14 +57,17 @@ const LoginPage = () => {
       
 
 
-      const response = await api.post('auth/login', loginData);
+      const response = await api.post('/auth/login', loginData);
       // Handle successful login
       console.log('Login successful:', response.data);
       console.log('Login successful:', response.data.token);
       setError('');
       setSuccessMessage('Login successful! Redirecting...');  // Set success message
+      
       localStorage.setItem('token', response.data.token);
+      localStorage.setItem('user', JSON.stringify(response.data.user));
 
+      
       // Redirect to the /myaccounts page after successful login
       setTimeout(() => navigate('/myaccounts'), 500); // Redirect after 2 seconds (show success message first)
     } catch (error) {
