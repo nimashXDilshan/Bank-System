@@ -1,11 +1,13 @@
 import jwt from "jsonwebtoken";
-import User from "../models/usermodel.js";
+//import User from "../models/usermodel.js";
 
 const protectRoute = async (req, res, next) => {
 	try {
 		const token = req.cookies.jwt;
+		// retrieve the jwt (JSON Web Token) stored in cookies sent by the client (browser) to the server. Here's an explanation of how it works:
 
-		if (!token) {
+		// cookies wl eka token ekak hri store krl na
+		if (!token){
 			return res.status(401).json({ error: "Unauthorized - No Token Provided" });
 		}
 
@@ -15,7 +17,7 @@ const protectRoute = async (req, res, next) => {
 			return res.status(401).json({ error: "Unauthorized - Invalid Token" });
 		}
 
-		const user = await User.findById(decoded.userID).select("-password");
+	    const user = await User.findById(decoded.userID).select("-password");
 
 		if (!user) {
 			return res.status(404).json({ error: "User not found" });

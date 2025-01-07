@@ -60,8 +60,10 @@ const LoginPage = () => {
       const response = await api.post('auth/login', loginData);
       // Handle successful login
       console.log('Login successful:', response.data);
+      console.log('Login successful:', response.data.token);
       setError('');
       setSuccessMessage('Login successful! Redirecting...');  // Set success message
+      localStorage.setItem('token', response.data.token);
 
       // Redirect to the /myaccounts page after successful login
       setTimeout(() => navigate('/myaccounts'), 500); // Redirect after 2 seconds (show success message first)
