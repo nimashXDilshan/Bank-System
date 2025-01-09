@@ -70,7 +70,8 @@ const LoginPage = () => {
       
       // Redirect to the /myaccounts page after successful login
       setTimeout(() => navigate('/myaccounts'), 500); // Redirect after 2 seconds (show success message first)
-    } catch (error) {
+      
+    } catch (error){
       console.error('Error during login:', error);
       if (error.response) {
         setError(error.response.data.message || 'An error occurred. Please try again later.');
