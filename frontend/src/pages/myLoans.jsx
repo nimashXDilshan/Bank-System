@@ -1,10 +1,17 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const MyLoans = () => {
+  const navigate = useNavigate();
+
   const loanDetails = [
     { id: 1, type: "Home Loan", balance: "$50,000.00", interestRate: "5.5% per annum", dueDate: "2025-01-15" },
     { id: 2, type: "Car Loan", balance: "$15,000.00", interestRate: "7.2% per annum", dueDate: "2025-01-20" },
   ];
+
+  const handleViewDetails = (loanId) => {
+    navigate(`/loandetails`);
+  };
 
   return (
     <div className="flex items-center justify-center min-h-screen p-6 bg-gradient-to-br from-blue-500 via-gray-100 to-gray-300">
@@ -17,6 +24,7 @@ const MyLoans = () => {
               <th className="p-3 font-medium text-left text-gray-800">Outstanding Balance</th>
               <th className="p-3 font-medium text-left text-gray-800">Interest Rate</th>
               <th className="p-3 font-medium text-left text-gray-800">Next Due Date</th>
+              <th className="p-3 font-medium text-left text-gray-800">Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -26,6 +34,14 @@ const MyLoans = () => {
                 <td className="p-3 text-gray-900">{loan.balance}</td>
                 <td className="p-3 text-gray-900">{loan.interestRate}</td>
                 <td className="p-3 text-gray-900">{loan.dueDate}</td>
+                <td className="p-3">
+                  <button
+                    onClick={() => handleViewDetails(loan.id)}
+                    className="px-4 py-2 text-sm text-white transition-all bg-blue-500 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  >
+                    View Details
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>

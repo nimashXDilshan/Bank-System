@@ -1,23 +1,21 @@
 import React, { useState } from "react";
 import api from '../api/apiClient';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const ViewMyAccounts = () => {
   const [searchTerm, setSearchTerm] = useState("");
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const accounts = [
     { accountNumber: "1234567890", type: "Savings", balance: "$5,000.00" },
     { accountNumber: "0987654321", type: "Checking", balance: "$2,300.00" },
-    { accountNumber: "5678901234", type: "Business", balance: "$10,000.00" },
+    { accountNumber: "5678901234", type: "Fixed", balance: "$10,000.00" },
   ];
 
   const filteredAccounts = accounts.filter((account) =>
     account.accountNumber.includes(searchTerm) ||
     account.type.toLowerCase().includes(searchTerm.toLowerCase())
   );
-
-  
 
   const handleLogout = async () => {
     try {
@@ -29,21 +27,29 @@ const ViewMyAccounts = () => {
       console.error('Logout failed:', error.response?.data?.message || error.message);
     }
   };
-  
-return (
-    <div className="flex flex-col items-center min-h-screen p-6 bg-gradient-to-r from-blue-500 via-gray-100 to-blue-300">
-      <h1 className="mb-6 text-3xl font-bold text-blue-900">My Accounts</h1>
-      <div className="w-full max-w-4xl p-6 bg-white rounded-lg shadow-md">
 
-      <div className="flex items-center justify-between w-full max-w-4xl">
-        <h1 className="mb-6 text-3xl font-bold text-blue-900">My Accounts</h1>
-        <button
-          className="px-4 py-2 text-white bg-red-600 rounded-md hover:bg-red-700"
-          onClick={handleLogout}
-        >
-          Logout
-        </button>
-      </div>
+  const handleViewDetails = (type) => {
+    if (type === "Savings") {
+      navigate("/savingdetails");
+    } else if (type === "Checking") {
+      navigate("/checkingdetails");
+    } else if (type === "Fixed") {
+      navigate("/fixeddetails");
+    }
+  };
+
+  return (
+    <div className="flex flex-col items-center min-h-screen p-6 bg-gradient-to-r from-blue-500 via-gray-100 to-blue-300">
+      <div className="w-full max-w-4xl p-6 bg-white rounded-lg shadow-md">
+        <div className="flex items-center justify-between w-full">
+          <h1 className="text-3xl font-bold text-blue-900">My Accounts</h1>
+          <button
+            className="px-4 py-2 text-white bg-red-600 rounded-md hover:bg-red-700"
+            onClick={handleLogout}
+          >
+            Logout
+          </button>
+        </div>
         <div className="mb-4">
           <input
             type="text"
@@ -70,7 +76,10 @@ return (
                   <td className="p-3">{account.type}</td>
                   <td className="p-3">{account.balance}</td>
                   <td className="p-3">
-                    <button className="px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700">
+                    <button
+                      onClick={() => handleViewDetails(account.type)}
+                      className="px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700"
+                    >
                       View Details
                     </button>
                   </td>

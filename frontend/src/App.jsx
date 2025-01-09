@@ -17,6 +17,7 @@ import BankServices from "./pages/bankServices";
 import ManagerBankProfile from "./pages/managerBankProfile"; 
 import EmployeeBankProfile from "./pages/employeeBankProfile";
 import WhoAreYou from "./pages/whoAreyou";  
+import MyAllDetails from "./pages/myalldetails";
 
 import { AuthProvider, useAuth } from './contexts/authContext';
 
@@ -25,6 +26,7 @@ import { AuthProvider, useAuth } from './contexts/authContext';
 
 const App = () => {
   return (
+    
     <AuthProvider>
     <Router>
       {/* If you want to use a layout, uncomment the following line and wrap the routes inside AppLayout */}
@@ -56,6 +58,7 @@ const App = () => {
           <Route path="/createonlinetransfer" element={<CreateOnlineTransfer />} />
           <Route path="/bankservices" element={<BankServices />} />
           <Route path="/whoareyou" element={<WhoAreYou />} />
+          <Route path="/myalldetails" element={<MyAllDetails />} />
           {/* Catch-all for unknown routes */}
           {/* Uncomment and define your Error component */}
           <Route path="*" element={<Error />} />
